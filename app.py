@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import os
 import json
 from pathlib import Path
+import fnmatch
 
 
 app = Flask(__name__)
@@ -14,6 +15,28 @@ app.register_blueprint(custom_instructions_bp)
 app.register_blueprint(prompt_builder_bp)
 app.secret_key = 'your-secret-key-change-this'
 
+# Utility function to load exclude patterns
+def load_exclude_patterns():
+    exclude_file = os.path.join(os.path.dirname(__file__), 'file_exclude_patterns.json')
+    if not os.path.exists(exclude_file):
+        return {'exclude_dirs': [], 'exclude_files': [], 'exclude_patterns': []}
+    with open(exclude_file, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def is_excluded(path, filename, rel_root, patterns):
+    # Check directory exclusion
+    for ex_dir in patterns.get('exclude_dirs', []):
+        if ex_dir and ex_dir in rel_root.split(os.sep):
+            return True
+    # Check file exclusion
+    if filename in patterns.get('exclude_files', []):
+        return True
+    # Check pattern exclusion
+    for pat in patterns.get('exclude_patterns', []):
+        if fnmatch.fnmatch(filename, pat):
+            return True
+    return False
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -23,14 +46,20 @@ def browse_directory():
     try:
         data = request.get_json()
         directory = data.get('directory', '')
-        
+
         if not directory or not os.path.exists(directory):
             return jsonify({'error': 'Directory does not exist'}), 400
-        
+
+        exclude_patterns = load_exclude_patterns()
         files = []
         try:
             for root, dirs, filenames in os.walk(directory):
+                # Filter directories in-place to skip excluded ones
+                rel_root = os.path.relpath(root, directory)
+                dirs[:] = [d for d in dirs if not is_excluded(os.path.join(root, d), d, os.path.join(rel_root, d), exclude_patterns)]
                 for filename in filenames:
+                    if is_excluded(os.path.join(root, filename), filename, rel_root, exclude_patterns):
+                        continue
                     file_path = os.path.join(root, filename)
                     relative_path = os.path.relpath(file_path, directory)
                     try:
@@ -45,9 +74,9 @@ def browse_directory():
                         continue
         except PermissionError:
             return jsonify({'error': 'Permission denied'}), 403
-        
+
         return jsonify({'files': files})
-    
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
