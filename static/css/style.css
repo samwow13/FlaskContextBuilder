@@ -1,0 +1,526 @@
+/* Modern CSS Reset and Base Styles */
+
+/* Lines of Code Display Styles */
+#linesOfCodeDisplay.loc-display {
+    margin-bottom: 24px;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 14px 28px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.10);
+    display: inline-block;
+    letter-spacing: 0.5px;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+.loc-green {
+    background: linear-gradient(90deg, #228B22 0%, #2ecc40 100%); /* dark green to green */
+}
+.loc-yellow {
+    background: linear-gradient(90deg, #FFD600 0%, #FFA726 100%); /* yellow to orange */
+    color: #333;
+}
+.loc-red {
+    background: linear-gradient(90deg, #e53935 0%, #b71c1c 100%); /* red to dark red */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.main-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    color: #4a5568;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Directory Selector */
+.directory-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.directory-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.directory-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ed8936, #dd6b20);
+    color: white;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #a0aec0, #718096);
+    color: white;
+}
+
+.btn-large {
+    padding: 16px 24px;
+    font-size: 1.1rem;
+}
+
+/* File Controls */
+.file-controls {
+    display: flex;
+    justify-content: space-between; /* Align children to start and end */
+    align-items: center; /* Vertically align items */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.additional-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #00CFE8, #008BF8);
+    color: white;
+}
+
+/* File Rows */
+.file-rows {
+    border: 2px dashed #e2e8f0;
+    border-radius: 10px;
+    min-height: 100px;
+    padding: 20px;
+}
+
+.file-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 4px 4px; /* Reduced top/bottom padding */
+    background: #f7fafc;
+    border-radius: 10px;
+    margin-bottom: 4px; /* Reduced margin-bottom */
+    transition: all 0.3s ease;
+}
+
+.file-row:hover {
+    background: #edf2f7;
+    transform: translateX(5px);
+}
+
+.file-row input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.file-select {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: white;
+}
+
+.file-select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.file-select-bold {
+    font-weight: bold;
+}
+
+.remove-btn {
+    background: #e53e3e;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+    background: #c53030;
+    transform: scale(1.1);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Context Preview */
+.context-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.context-header h2 {
+    margin-bottom: 0;
+}
+
+.context-container {
+    background: #1a202c;
+    color: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#contextContent {
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #48bb78;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    animation: slideInRight 0.3s ease;
+}
+
+.toast.error {
+    background: #e53e3e;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.toast-close:hover {
+    opacity: 1;
+}
+
+/* Error Messages */
+.error-message {
+    color: #e53e3e;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    padding: 8px 12px;
+    background: #fed7d7;
+    border-radius: 6px;
+}
+
+/* Animations */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .main-content {
+        padding: 20px;
+    }
+    
+    .directory-selector {
+        flex-direction: column;
+    }
+    
+    .file-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .btn-large {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5a67d8;
+}
+
+/* Styles for file preview items */
+.file-preview-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border: 1px solid #444; /* A slightly visible border for all items */
+}
+
+.file-preview-path {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: monospace;
+}
+
+.file-preview-content {
+    white-space: pre-wrap; /* Allows wrapping and preserves whitespace */
+    word-wrap: break-word; /* Breaks long words to prevent overflow */
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+/* Alternating background colors */
+.file-preview-item.even-bg {
+    background-color: #282c34; /* Dark background, similar to original editor */
+    color: #abb2bf; /* Light grey text, common in dark themes */
+}
+
+.file-preview-item.odd-bg {
+    background-color: #3a3f4b; /* A slightly lighter dark grey */
+    color: #abb2bf; /* Consistent text color */
+}
+
+/* Ensure pre takes up full width and respects padding */
+#contextContent pre {
+    margin: 0; /* Remove default pre margins if any */
+    padding: 5px; /* Add some padding inside the pre for content */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Error message styling within preview */
+#contextContent .error-message {
+    color: #ff6b6b; /* A distinct error color */
+    padding: 10px;
+    background-color: #402020; /* Dark red background for errors */
+    border: 1px solid #ff6b6b;
+    border-radius: 4px;
+}
+
+/* Project Selection Section Styles */
+.project-selection-section {
+    margin-bottom: 30px; /* Same as other sections */
+}
+
+.project-display-controls {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Space out name and button */
+    gap: 20px; /* Space between name and button if not fully spaced out */
+    padding: 15px;
+    background-color: #f7fafc; /* Light background for the controls area */
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.project-name-display {
+    font-size: 1.5rem; /* Prominent project name */
+    color: #2d3748; /* Darker text for better readability */
+    font-weight: 600;
+    margin-bottom: 0; /* Override default h2 margin if any */
+    flex-grow: 1; /* Allow project name to take available space */
+    overflow: hidden; /* Prevent long names from breaking layout */
+    text-overflow: ellipsis; /* Show ... for very long names */
+    white-space: nowrap; /* Keep project name on one line */
+}
+
+/* Ensure the error message below this section has some top margin */
+.project-selection-section .error-message {
+    margin-top: 10px;
+}
+
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1001; /* Sit on top - higher than toast */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    padding-top: 60px; /* Location of the box */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 5% from the top and centered */
+    padding: 25px;
+    border: 1px solid #888;
+    width: 60%; /* Could be more or less, depending on screen size */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    animation: fadeInModal 0.3s ease-out;
+}
+
+@keyframes fadeInModal {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

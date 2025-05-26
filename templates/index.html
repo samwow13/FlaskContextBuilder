@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Context Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-robot"></i> LLM Context Generator</h1>
+            <p>Select files to generate context for your LLM prompts</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Total Lines of Code Display -->
+            <div id="linesOfCodeDisplay" class="loc-display">Total Lines of Code: 0</div>
+            <!-- Current Project Display and Directory Selection Button -->
+            <div class="section project-selection-section">
+                <div class="project-display-controls">
+                    <h2 id="currentProjectNameDisplay" class="project-name-display">No Project Selected</h2>
+                    <button id="pickDirectoryBtn" class="btn btn-primary">
+                        <i class="fas fa-folder-open"></i> Set Working Directory
+                    </button>
+                </div>
+                <div id="directoryError" class="error-message" style="display: none;"></div>
+            </div>
+
+            <!-- File Selection -->
+            <div class="section">
+                <h2><i class="fas fa-files"></i> File Selection</h2>
+                <div class="file-controls">
+                    <div>
+                        <button id="addFileBtn" class="btn btn-success">
+                            <i class="fas fa-plus"></i> Add File
+                        </button>
+                        <button id="clearAllBtn" class="btn btn-warning">
+                            <i class="fas fa-trash"></i> Clear All
+                        </button>
+                    </div>
+                    <div class="additional-controls">
+                        <button id="customInstructionsBtn" class="btn btn-info">
+                            <i class="fas fa-cog"></i> Custom Instructions
+                        </button>
+                        <button id="promptBuilderBtn" class="btn btn-info">
+                            <i class="fas fa-lightbulb"></i> Prompt Builder
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="fileRows" class="file-rows">
+                    <!-- File rows will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="section">
+                <div class="action-buttons">
+                    <button id="copyContextBtn" class="btn btn-primary btn-large" disabled>
+                        <i class="fas fa-copy"></i> Copy Context to Clipboard
+                    </button>
+                    <button id="previewContextBtn" class="btn btn-secondary btn-large" disabled>
+                        <i class="fas fa-eye"></i> Preview Context
+                    </button>
+                </div>
+            </div>
+
+            <!-- Context Preview -->
+            <div id="contextPreview" class="section" style="display: none;">
+                <div class="context-header">
+                    <h2><i class="fas fa-eye"></i> Context Preview</h2>
+                    <button id="clearPreviewBtn" class="btn btn-warning">
+                        <i class="fas fa-times"></i> Clear
+                    </button>
+                </div>
+                <div class="context-container">
+                    <pre id="contextContent"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notifications -->
+        <div id="toast" class="toast" style="display: none;">
+            <div class="toast-content">
+                <span id="toastMessage"></span>
+                <button class="toast-close">&times;</button>
+            </div>
+        </div>
+
+        <!-- Custom Instructions Modal -->
+        <div id="customInstructionsModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-btn" id="closeCustomInstructionsModal">&times;</span>
+                <h2>Custom Instructions</h2>
+                <textarea id="customInstructionsTextarea" placeholder="Enter your custom instructions here..." rows="10" style="width: 98%; margin-bottom: 15px; padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem;"></textarea>
+                <button id="saveCustomInstructionsBtn" class="btn btn-primary">Save Instructions</button>
+            </div>
+        </div>
+
+        <!-- Prompt Builder Modal -->
+        <div id="promptBuilderModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-btn" id="closePromptBuilderModal">&times;</span>
+                <h2>Prompt Builder</h2>
+                <p>This is where the prompt builder interface will go.</p>
+                <!-- Add form elements or other content here -->
+                <button class="btn btn-primary">Generate Prompt</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom_instructions.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/prompt_builder.js') }}"></script>
+</body>
+</html>

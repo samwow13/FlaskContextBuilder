@@ -1,0 +1,3 @@
+{
+    "instructions": "\n- This is a Flask application.\n- When making suggestions for changes, keep object oriented programming in mind.\n- Ask questions to me if something still needs clarification before implementation.\n- Make sure project import statements are updated based on the context provided. Each file contains a file name & where it is in the project."
+}
