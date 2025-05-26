@@ -1,5 +1,11 @@
 {
-  "exclude_dirs": [".git", "__pycache__"],
+  "exclude_dirs": [
+    ".git",
+    "__pycache__"
+  ],
   "exclude_files": [],
-  "exclude_patterns": ["*.pyc", "*.pyo"]
+  "exclude_patterns": [
+    "*.pyc",
+    "*.pyo"
+  ]
 }

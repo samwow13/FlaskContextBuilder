@@ -10,9 +10,11 @@ app = Flask(__name__)
 # Import and register blueprints
 from custom_instructions_routes import custom_instructions_bp
 from prompt_builder_routes import prompt_builder_bp
+from exclusion_manager_routes import exclusion_manager_bp
 
 app.register_blueprint(custom_instructions_bp)
 app.register_blueprint(prompt_builder_bp)
+app.register_blueprint(exclusion_manager_bp)
 app.secret_key = 'your-secret-key-change-this'
 
 # Utility function to load exclude patterns

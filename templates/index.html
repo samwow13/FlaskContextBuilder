@@ -41,11 +41,14 @@
                         </button>
                     </div>
                     <div class="additional-controls">
-                        <button id="customInstructionsBtn" class="btn btn-info">
-                            <i class="fas fa-cog"></i> Custom Instructions
-                        </button>
                         <button id="promptBuilderBtn" class="btn btn-info">
                             <i class="fas fa-lightbulb"></i> Prompt Builder
+                        </button>
+                        <button id="manageExclusionsBtn" class="btn btn-info">
+                            <i class="fas fa-sliders-h"></i> Manage Exclusions
+                        </button>
+                        <button id="customInstructionsBtn" class="btn btn-info">
+                            <i class="fas fa-cog"></i> Custom Instructions
                         </button>
                     </div>
                 </div>
@@ -114,5 +117,34 @@
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     <script src="{{ url_for('static', filename='js/custom_instructions.js') }}"></script>
     <script src="{{ url_for('static', filename='js/prompt_builder.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/exclusion_manager.js') }}"></script>
+    <!-- Exclusion Manager Modal -->
+    <div id="exclusionManagerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeExclusionManagerModal">&times;</span>
+            <h2>Manage Exclusions</h2>
+            <div class="exclusion-sections-row">
+                <div class="exclusion-section exclusion-section-dir">
+                    <h3>Excluded Directories</h3>
+                    <ul id="excludeDirsList"></ul>
+                    <input type="text" id="newExcludeDir" placeholder="Add directory name...">
+                    <button id="addExcludeDirBtn" class="btn btn-success">Add Directory</button>
+                </div>
+                <div class="exclusion-section exclusion-section-file">
+                    <h3>Excluded Files</h3>
+                    <ul id="excludeFilesList"></ul>
+                    <input type="text" id="newExcludeFile" placeholder="Add file name...">
+                    <button id="addExcludeFileBtn" class="btn btn-success">Add File</button>
+                </div>
+                <div class="exclusion-section exclusion-section-pattern">
+                    <h3>Excluded Patterns</h3>
+                    <ul id="excludePatternsList"></ul>
+                    <input type="text" id="newExcludePattern" placeholder="Add pattern (e.g. *.pyc)...">
+                    <button id="addExcludePatternBtn" class="btn btn-success">Add Pattern</button>
+                </div>
+            </div>
+            <button id="saveExclusionsBtn" class="btn btn-primary" style="margin-top:20px;">Save Changes</button>
+        </div>
+    </div>
 </body>
 </html>
